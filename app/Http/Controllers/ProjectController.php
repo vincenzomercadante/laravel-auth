@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
+use App\Models\Admin\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -10,12 +10,11 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $projects = Project::all();
-        return view('projects', compact('projects'))
+        return view('admin.projects', compact('projects'));
     }
 
     /**
