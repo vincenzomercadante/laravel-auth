@@ -8,9 +8,9 @@
       {{-- project card generator --}}
       @foreach ($projects as $project)
         <div class="col">
-          <div class="card" style="width: 18rem;">
+          <div class="card">
             {{-- project image --}}
-            <img src="" class="card-img-top" alt="{{$project->title}} image">
+            <img src="" class="card-img-top border border-bottom-1 text-center" alt="{{$project->title}} image">
             <div class="card-body">
               {{-- project title --}}
               <h5 class="card-title">{{$project->title}}</h5>
