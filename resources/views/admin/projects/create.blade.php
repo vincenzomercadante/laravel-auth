@@ -13,17 +13,30 @@
 
             <div class="col-12">
                 <label for="title" class="form-label mb-2">Project's Title</label>
-                <input type="text" name="title" id="title" class="form-control" placeholder="Project's Title">
+                <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror"
+                    placeholder="Project's Title" value="{{ old('title') }}">
+                @error('title')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-12">
                 <label for="github_reference" class="form-label mb-2">Github Link</label>
-                <input type="url" name="github_reference" id="github_reference" class="form-control"
-                    placeholder="Project's Github Link">
+                <input type="url" name="github_reference" id="github_reference"
+                    class="form-control @error('github_reference') is-invalid @enderror" placeholder="Project's Github Link"
+                    value="{{ old('github_reference') }}">
+                @error('github_reference')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="col-12">
                 <label for="description" class="form-label mb-2">Project's Description</label>
-                <textarea name="description" id="description" cols="30" rows="10" class="form-control"
-                    placeholder="Project's Description"></textarea>
+                <textarea name="description" id="description" cols="30" rows="10"
+                    class="form-control @error('description') is-invalid @enderror" placeholder="Project's Description">{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="col-12 d-flex gap-2">
                 <input type="submit" value="Save" class="btn btn-success">
