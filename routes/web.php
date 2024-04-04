@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Guest\DashboardController as GuestDashboardController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,18 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// # Rotte pubbliche
+// # Public Route
 Route::get('/', [GuestDashboardController::class, 'index'])
   ->name('home');
 
-// # Rotte protette
+// # Protected Route
 Route::middleware('auth')
   ->prefix('/admin')
   ->name('admin.')
   ->group(function () {
 
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])
-      ->name('dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('projects', ProjectController::class);
 
