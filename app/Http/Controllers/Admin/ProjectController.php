@@ -43,7 +43,7 @@ class ProjectController extends Controller
 
         $project->save();
 
-        return redirect()->route('admin.projects.show', compact('project'));
+        return redirect()->route('admin.projects.show', compact('project'))->with('message-status', 'alert-success')->with('message-text', 'Project created successfully');;
     }
 
     /**
@@ -61,7 +61,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit-projects', compact('project'));
     }
 
     /**
@@ -72,7 +72,14 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $project->fill($data);
+
+        $project->slug = Str::slug($project->title);
+
+        $project->save();
+
+        return redirect()->route('admin.projects.show', $project)->with('message-status', 'alert-success')->with('message-text', 'Project modified successfully');;
     }
 
     /**
@@ -82,6 +89,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index')->with('message-status', 'alert-danger')->with('message-text', 'Project delete successfully');
     }
 }
