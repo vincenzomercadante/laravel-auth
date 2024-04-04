@@ -5,6 +5,7 @@
 @section('content')
 
     <div class="container">
+
         <h1 class="my-3">Add a new Project</h1>
 
         <form action="{{ route('admin.projects.store') }}" method="POST" class="row gy-4">

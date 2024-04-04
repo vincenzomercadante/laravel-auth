@@ -5,7 +5,16 @@
 @section('content')
 
     <div id="project-details" class="container mt-4">
-        <h1 class="">
+
+        @if (session('message-text'))
+            <div class="alert {{ session('message-status') }} alert-dismissible fade show mb-2" role="alert">
+                {{ session('message-text') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+
+        <h1>
             {{ $project->title }}
         </h1>
 

@@ -4,6 +4,14 @@
 
 @section('content')
     <div class="container" id="projects">
+
+        @if (session('message-text'))
+            <div class="alert {{ session('message-status') }} alert-dismissible fade show" role="alert">
+                {{ session('message-text') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <h1 class="my-3">Projects</h1>
 
         <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Add a Project</a>
